@@ -16,7 +16,7 @@ public class PlayerTank : MonoBehaviour {
 	
 	void Update ()
     {
-		if(Vector3.Distance(transform.position,targetTransform.position)<5) //타켓을 직은 거리가 5보다 적을 경우 리턴
+		if(Vector3.Distance(transform.position,targetTransform.position)<1) //타켓을 직은 거리가 5보다 적을 경우 리턴
         {
             return;
         }
