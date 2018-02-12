@@ -9,11 +9,13 @@ public class CrowAgnet : MonoBehaviour {
 
     public Transform target;
     private NavMeshAgent agent;
+    public float angetSpeedMin;
+    public float angetSpeedMax;
 
 	void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = Random.Range(4, 5);
+        agent.speed = Random.Range(angetSpeedMin, angetSpeedMax);
         agent.SetDestination(target.position);
 	}
 }

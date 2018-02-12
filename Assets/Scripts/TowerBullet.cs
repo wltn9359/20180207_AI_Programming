@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class TowerBullet : MonoBehaviour {
 
-    public float Speed;
+    public float bulletSpeed;
 
 	void Start ()
     {
         Destroy(gameObject, 2f);
-    }
+	}
 	
 	void Update ()
     {
-
-        gameObject.transform.Translate(0,0,Speed * Time.deltaTime);
- 
-       
+        transform.Translate(0, 0, bulletSpeed * Time.deltaTime);
 	}
 }
