@@ -10,16 +10,17 @@ public class Tower2 : MonoBehaviour {
     public Transform firePosition;
     public List <GameObject> lookObj;
     public float rotacionSpeed;
-
-	void Start () {
-		
-	}
 	
+   
+
+
+
 	void Update ()
     {
-
         fireCool += Time.deltaTime;
       
+       
+
         if(lookObj.Count>0)
         {
             if (lookObj[0] != null)
@@ -28,14 +29,18 @@ public class Tower2 : MonoBehaviour {
                 dir.y = 0;
                 dir.Normalize();
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), rotacionSpeed * Time.deltaTime);
+               
 
                 if (fireCool > fireDelay)
                 {
                     fireCool = 0;
                     GameObject towerBullet = Instantiate(bullet) as GameObject;
+
                     firePosition.transform.LookAt(lookObj[0].transform);
                     towerBullet.transform.position = firePosition.position;
                     towerBullet.transform.localRotation = firePosition.rotation;
+
+                    towerBullet.GetComponent<TowerBullet>().target = lookObj[0].transform;
                 }
             }
             else
@@ -45,11 +50,13 @@ public class Tower2 : MonoBehaviour {
         }
 	}
 
+
+
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag=="Enemy")
         {
-            Debug.Log(col.name);
+            //Debug.Log(col.name);
             lookObj.Add(col.gameObject);
         }
     }
@@ -58,7 +65,7 @@ public class Tower2 : MonoBehaviour {
     {
         if (col.gameObject.tag == "Enemy")
         {
-            Debug.Log(col.name);
+            //Debug.Log(col.name);
             lookObj.Remove(col.gameObject);
          
         }
